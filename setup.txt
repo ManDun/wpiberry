@@ -1,0 +1,30 @@
+## SET STATIC IP ##
+sudo nano /etc/dhcpcd.conf
+Uncomment and set following
+static ip_address=192.168.0.103
+static routers=192.168.1.1
+static domain_name_servers=192.168.1.1
+
+## SETUP DOCKER
+mkdir docker
+sudo apt-get update && sudo apt-get upgrade
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker manas
+sudo docker version
+sudo docker run hello-world
+
+## SETUP GIT
+mkdir git
+sudo apt-get update && sudo apt-get upgrade
+sudo apt install git
+git --version
+git config --global user.name "Manas Mallick"
+git config --global user.email "manasm.dev@gmail.com"
+git config --list
+ssh-keygen
+# CP cat ~/.ssh/id_rsa.pub
+# Go to settings-> SSH and GPG keys-> New SSH key
+# Add name pi2 and paste key to body-> save
+
+
