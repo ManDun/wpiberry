@@ -27,4 +27,10 @@ ssh-keygen
 # Go to settings-> SSH and GPG keys-> New SSH key
 # Add name pi2 and paste key to body-> save
 
+## SETUP NGINX WITH DOCKER
+sudo docker pull nginx
+
+## SETUP POSTGRES
+sudo docker pull postgres
+
 
