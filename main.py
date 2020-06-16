@@ -9,8 +9,8 @@ __license__ = "MIT"
 
 import sys
 from logzero import logger, logfile
-from utils import network
-from utils import const
+from utils import network, const, emails
+
 
 log_file = const.LOG_FILE + '.log'
 logfile(log_file, maxBytes=1000000, backupCount=3)
@@ -28,7 +28,9 @@ def main():
     """ Main entry point of the app """
     logger.debug('Started from main')
 
-    if method_name in const.CHECK_NETWORK:
+    if method_name in const.SETUP_EMAIL:
+        emails.setup_email()
+    elif method_name in const.CHECK_NETWORK:
         network.check_internet_on()
     else:
         logger.error(f'Invalid argument: {method_name}')
