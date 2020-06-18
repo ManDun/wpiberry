@@ -9,7 +9,7 @@ services:
       - 9000:9000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./volumes/portainer/data:/data
+      - /volumes/portainer/data:/data
 
   nodered:
     container_name: nodered
@@ -21,7 +21,7 @@ services:
     ports:
       - 1880:1880
     volumes:
-      - ./volumes/nodered/data:/data
+      - /volumes/nodered/data:/data
 
   influxdb:
     container_name: influxdb
@@ -34,8 +34,8 @@ services:
     env_file:
       - ./services/influxdb/influxdb.env
     volumes:
-      - ./volumes/influxdb/data:/var/lib/influxdb
-      - ./backups/influxdb/db:/var/lib/influxdb/backup
+      - /volumes/influxdb/data:/var/lib/influxdb
+      - /backups/influxdb/db:/var/lib/influxdb/backup
 
   grafana:
     container_name: grafana
@@ -47,8 +47,8 @@ services:
     env_file:
       - ./services/grafana/grafana.env
     volumes:
-      - ./volumes/grafana/data:/var/lib/grafana
-      - ./volumes/grafana/log:/var/log/grafana
+      - /volumes/grafana/data:/var/lib/grafana
+      - /volumes/grafana/log:/var/log/grafana
 
   mosquitto:
     container_name: mosquitto
@@ -59,16 +59,16 @@ services:
       - 1883:1883
       - 9001:9001
     volumes:
-      - ./volumes/mosquitto/data:/mosquitto/data
-      - ./volumes/mosquitto/log:/mosquitto/log
-      - ./services/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - /volumes/mosquitto/data:/mosquitto/data
+      - /volumes/mosquitto/log:/mosquitto/log
+      - /services/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
 
 
   telegraf:
     container_name: telegraf
     image: telegraf
     volumes:
-      - ./services/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /services/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     depends_on:
       - influxdb
       - mosquitto
@@ -82,7 +82,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./volumes/postgres/data:/var/lib/postgresql/data
+      - /volumes/postgres/data:/var/lib/postgresql/data
 
   pihole:
     container_name: pihole
@@ -96,8 +96,8 @@ services:
     env_file:
       - ./services/pihole/pihole.env
     volumes:
-       - ./volumes/pihole/etc-pihole/:/etc/pihole/
-       - ./volumes/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/
+       - /volumes/pihole/etc-pihole/:/etc/pihole/
+       - /volumes/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/
     dns:
       - 127.0.0.1
       - 1.1.1.1
