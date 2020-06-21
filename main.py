@@ -9,13 +9,14 @@ __license__ = "MIT"
 
 import sys
 import os
-from logzero import logger, logfile
+from logzero import logger, logfile, loglevel
 from utils import network, const, emails
-
+import logging
 
 log_file = os.path.join(const.LOG_FOLDER, const.LOG_FILE + '.log')
 
 logfile(log_file, maxBytes=1000000, backupCount=3)
+loglevel(level=logging.INFO)
 
 arguments = sys.argv
 
