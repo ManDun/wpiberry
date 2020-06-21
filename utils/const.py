@@ -9,4 +9,5 @@ EMAIL_PASSWORD = 'EMAIL_PASSWORD'
 # main.py
 SETUP_EMAIL = 'setup_email'
 CHECK_NETWORK = 'check_network'
+LOG_FOLDER = '/var/log/'
 LOG_FILE = 'WPIBERRY'

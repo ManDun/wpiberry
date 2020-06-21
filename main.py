@@ -8,11 +8,13 @@ __version__ = "0.1.0"
 __license__ = "MIT"
 
 import sys
+import os
 from logzero import logger, logfile
 from utils import network, const, emails
 
 
-log_file = const.LOG_FILE + '.log'
+log_file = os.path.join(const.LOG_FOLDER, const.LOG_FILE + '.log')
+
 logfile(log_file, maxBytes=1000000, backupCount=3)
 
 arguments = sys.argv

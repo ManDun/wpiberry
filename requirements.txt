@@ -1,2 +1,1 @@
-logzero  # see github.com/metachris/logzero
-flake8
+logzero==1.5.0
