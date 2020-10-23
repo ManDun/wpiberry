@@ -1,3 +1,9 @@
+## ENABLE SSH (HEADLESS)#
+# On Mac
+cd /volumes/boot
+touch ssh
+
+
 ## SET STATIC IP ##
 sudo nano /etc/dhcpcd.conf
 Uncomment and set following
