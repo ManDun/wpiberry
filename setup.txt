@@ -3,6 +3,11 @@
 cd /volumes/boot
 touch ssh
 
+## UPDATE KEYS ##
+ssh-keygen -R "192.168.1.103"
+
+## UPDATE PASSWD ##
+passwd
 
 ## SET STATIC IP ##
 sudo nano /etc/dhcpcd.conf
